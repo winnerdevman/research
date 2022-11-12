@@ -35,7 +35,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/aaa', 'Home::index');
 
 /*
  * --------------------------------------------------------------------
@@ -53,3 +53,12 @@ $routes->get('/', 'Home::index');
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+// Auth Route
+$routes->get('auth/login', 'Auth\Login::index');
+$routes->get('auth/login_password_recover', 'Auth\Login::login_password_recover');
+$routes->get('auth/login_password_reset', 'Auth\Login::login_password_reset');
+$routes->post("auth/logout", 'Auth\Login::logout');
+
+// Dashboard
+$routes->get("dashboard", 'Dashboard::index');
