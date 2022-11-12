@@ -19,6 +19,7 @@
 
 	<!-- Theme JS files -->
 	<script src="assets/js/app.js"></script>
+	<script src="<?php echo base_url("assets/js/configurator.js");?>"></script>
 	<!-- /theme JS files -->
 
 </head>

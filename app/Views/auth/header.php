@@ -13,11 +13,15 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
+	<script src="<?php echo base_url("assets/js/jquery/jquery.min.js");?>"></script>
 	<script src="<?php echo base_url("assets/js/bootstrap/bootstrap.bundle.min.js");?>"></script>
+	<script src="<?php echo base_url("assets/js/vendor/forms/validation/validate.min.js");?>"></script>
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
 	<script src="<?php echo base_url("assets/js/app.js");?>"></script>
+	<script src="<?php echo base_url("assets/js/configurator.js");?>"></script>
+	<script src="<?php echo base_url("assets/js/auth/login.js");?>"></script>
 	<!-- /theme JS files -->
 
 </head>

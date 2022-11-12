@@ -59,6 +59,7 @@ $routes->get('auth/login', 'Auth\Login::index');
 $routes->get('auth/login_password_recover', 'Auth\Login::login_password_recover');
 $routes->get('auth/login_password_reset', 'Auth\Login::login_password_reset');
 $routes->post("auth/logout", 'Auth\Login::logout');
+$routes->post("auth/login_request", 'Auth\Login::login_request');
 
 // Dashboard
 $routes->get("dashboard", 'Dashboard::index');

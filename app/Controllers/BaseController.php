@@ -40,13 +40,34 @@ abstract class BaseController extends Controller
     /**
      * Constructor.
      */
+    protected $main_url = "dashboard";
+    protected $login_url = "auth/login";
+    protected $latest_url = "";
+
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+        $this->user_model = new \App\Models\LocationUserModel();
+        $this->session = \Config\Services::session();
     }
+
+    protected function checkAuth()
+    {
+        $uri = uri_string();
+        $user_session = session("user");
+        if ($user_session){
+            if ($uri == "auth/login" || $uri == "auth/login_password_recover" || $uri == "auth/login_password_reset"){
+                return base_url($this->main_url);
+            }
+        }else{
+            if ($uri != "auth/login" && $uri != "auth/login_password_recover" && $uri != "auth/login_password_reset"){
+                return base_url($this->login_url);
+            }
+        }
+        return false;
+    } 
+
 }
