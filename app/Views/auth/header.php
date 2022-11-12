@@ -9,7 +9,7 @@
 	<!-- Global stylesheets -->
 	<link href="<?php echo base_url("assets/fonts/inter/inter.css");?>" rel="stylesheet" type="text/css">
 	<link href="<?php echo base_url("assets/icons/phosphor/styles.min.css");?>" rel="stylesheet" type="text/css">
-	<link href="<?php echo base_url("assets/css/all.min.css");?>" id="stylesheet" rel="stylesheet" type="text/css">
+	<link href="<?php echo base_url("assets/css/all_auth.min.css");?>" id="stylesheet" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
