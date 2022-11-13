@@ -487,10 +487,6 @@ const App = function () {
         });
     };
 
-
-    // Misc
-    // -------------------------
-
     // Dropdown submenus. Trigger on click
     const dropdownSubmenu = function() {
 
@@ -539,12 +535,6 @@ const App = function () {
             });
         }
     };
-
-
-
-    //
-    // Return objects assigned to module
-    //
 
     return {
 

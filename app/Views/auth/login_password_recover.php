@@ -2,7 +2,7 @@
 <div class="content d-flex justify-content-center align-items-center">
 
     <!-- Password recovery form -->
-    <form class="login-form" action="index.html">
+    <form class="forgot-password-form" action="#" method="post" id="forgot-password-form">
         <div class="card mb-0">
             <div class="card-body">
                 <div class="text-center mb-3">
@@ -16,7 +16,7 @@
                 <div class="mb-3">
                     <label class="form-label">Your email</label>
                     <div class="form-control-feedback form-control-feedback-start">
-                        <input type="email" class="form-control" placeholder="john@doe.com">
+                        <input type="email" name="forgot-email" id="forgot-email" required class="form-control" placeholder="john@doe.com">
                         <div class="form-control-feedback-icon">
                             <i class="ph-at text-muted"></i>
                         </div>

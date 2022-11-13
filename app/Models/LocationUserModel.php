@@ -20,7 +20,6 @@ class LocationUserModel extends BaseModel
         $result = $this->db->table($this->table)
                 ->where($where)
                 ->get()->getResult();
-        
         return count($result) == 0 ? false : $result[0];
     }
 }

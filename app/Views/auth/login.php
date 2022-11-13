@@ -12,7 +12,13 @@
                     <h5 class="mb-0">Login to your account</h5>
                     <span class="d-block text-muted">Enter your credentials below</span>
                 </div>
-
+                <div class="mb-13 hide" id="login_failed_box">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <i class="ph-x-circle me-2"></i>
+                        <span class="fw-semibold">Credential Error!</span> Check your username and password, again.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Username</label>
                     <div class="form-control-feedback form-control-feedback-start">

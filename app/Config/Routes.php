@@ -55,11 +55,13 @@ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 }
 
 // Auth Route
-$routes->get('auth/login', 'Auth\Login::index');
-$routes->get('auth/login_password_recover', 'Auth\Login::login_password_recover');
-$routes->get('auth/login_password_reset', 'Auth\Login::login_password_reset');
-$routes->post("auth/logout", 'Auth\Login::logout');
-$routes->post("auth/login_request", 'Auth\Login::login_request');
+$routes->get('auth/login', 'Auth\Login::index', ["as"=> "auth_login"]);
+$routes->get('auth/login_password_recover', 'Auth\Login::login_password_recover', ["as"=> "auth_login_password_recover"]);
+$routes->get('auth/login_password_reset', 'Auth\Login::login_password_reset', ["as"=>"auth_login_password_reset"]);
+$routes->get("auth/logout", 'Auth\Login::logout', ["as"=> "auth_logout"]);
+$routes->post("auth/login_request", 'Auth\Login::login_request', ["as"=> "auth_login_request"]);
+$routes->post("auth/send_forgot_email", "Auth\Login::send_forgot_email", ["as"=> "auth_send_forgot_email"]);
 
 // Dashboard
 $routes->get("dashboard", 'Dashboard::index');
+$routes->addRedirect('/', 'auth_login');

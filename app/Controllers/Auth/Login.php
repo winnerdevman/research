@@ -40,10 +40,43 @@ class Login extends BaseController
     }
 
     public function logout(){
-        return true;
+        $this->session->remove("user"); 
+        return redirect()->to(base_url("auth/login"));
     }
 
     public function login_request(){
-        extract($this->input());
+        $request = \Config\Services::request();
+        extract($request->getPost());
+
+        $user = $this->user_model->getUser($username, $password);
+        $result = ["status"=> "success"];
+        if ($user){
+            $this->session->set("user", $user);
+        }else{
+            $result["status"] = "failed";
+        }
+        echo json_encode($result);
+    }
+
+    public function send_forgot_email(){
+        $request = \Config\Services::request();
+        extract($request->getPost());
+        $result = ["status"=> "success", "email"=> $email];
+
+        $email = \Config\Services::email();
+
+        $email->setFrom('bensch8920@gmail.com', 'Your Name');
+        $email->setTo('winwilust@gmail.com');
+
+        $email->setSubject('Email Test11');
+        $email->setMessage('Testing the email class.');
+
+        if (! $email->send()) {
+            $result["status"] = "1111";
+        }else{
+            $result["status"] = "2222";
+        }
+        print_r($email);
+        echo json_encode($result);
     }
 }

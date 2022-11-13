@@ -1,3 +1,11 @@
 .line-height-48{
     line-height: 48px;
 }
+
+.hide{
+    display: none !important;
+}
+
+.show{
+    display: block !important;
+}
