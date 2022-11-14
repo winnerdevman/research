@@ -57,7 +57,9 @@ abstract class BaseController extends Controller
 
     protected function checkAuth()
     {
-        $uri = uri_string();
+
+	    $uri = uri_string();
+	  return false; 
         $user_session = session("user");
         if ($user_session){
             if ($uri == "auth/login" || $uri == "auth/login_password_recover" || $uri == "auth/login_password_reset"){

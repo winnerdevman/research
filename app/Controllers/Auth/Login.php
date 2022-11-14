@@ -7,6 +7,7 @@ class Login extends BaseController
 {
     public function index()
     {
+	
         $return = $this->checkAuth();
         if ($return ){
             return redirect()->to($return);
