@@ -22,6 +22,14 @@ class LocationUserModel extends BaseModel
                 ->get()->getResult();
         return count($result) == 0 ? false : $result[0];
     }
+
+    public function isUser($email){
+        echo $email;echo $email;
+        $result = $this->db->table($this->table )
+                ->where("locationUserEmail", $email )
+                ->get()->getResult();
+        return count($result) == 0 ? false : $result[0];
+    }
 }
 
 ?>

@@ -12,7 +12,18 @@
                     <h5 class="mb-0">Password recovery</h5>
                     <span class="d-block text-muted">We'll send you instructions in email</span>
                 </div>
-
+                <div class="mb-3">
+                    <div class="alert alert-danger alert-dismissible hide" id="forgot_psw_alert">
+                        <i class="ph-x-circle me-2"></i>
+                        <span class="fw-semibold">Alert!</span> The email address is not exist.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="alert alert-success alert-dismissible hide" id="forgot_psw_success">
+                        <i class="ph-check-circle me-2"></i>
+                        <span class="fw-semibold">Success!</span> Check your email, please.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Your email</label>
                     <div class="form-control-feedback form-control-feedback-start">

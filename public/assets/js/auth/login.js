@@ -130,7 +130,20 @@ function validate_forgot_password_form(){
                 type: "post",
                 dataType: "json",
                 success: function(data){
-                    console.log(data);
+                    switch(data['status']){
+                        case "success":
+                            $("#forgot_psw_success").removeClass("hide");
+                            $("#forgot_psw_alert").addClass("hide");
+                            break;
+                        case "failed":
+                            $("#forgot_psw_success").addClass("hide");
+                            $("#forgot_psw_alert").removeClass("hide");
+                            break;
+                        case "not exist":
+                            $("#forgot_psw_success").addClass("hide");
+                            $("#forgot_psw_alert").removeClass("hide");
+                            break;
+                    }
                 }
             });
             return false;

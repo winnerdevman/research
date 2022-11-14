@@ -60,23 +60,32 @@ class Login extends BaseController
 
     public function send_forgot_email(){
         $request = \Config\Services::request();
-        extract($request->getPost());
-        $result = ["status"=> "success", "email"=> $email];
+        extract($request->getPost());       
+        $is_user = $this->user_model->isUser($email);
+        if ($is_user){
+            $user_token = md5(date("Y-m-d H:i:s"));
+            $token_item = $this->user_token_model->getUserTokenItem($is_user->locationUserId );
+            if ($token_item ){
+                $this->user_token_model->update($token_item->id, ["locationuser_key"=> $user_token, "start_time"=> date("Y-m-d H:i:s")]);
+            }else{
+                $this->user_token_model->insert(["locationuser_id"=> $user_id, "locationuser_key"=> $user_token, "start_time"=> date("Y-m-d H:i:s")]);
+            }
+            //$token = $this->user_token_model->generateResetPasswordToken($is_user->locationUserId);
+            $smtp_email = \Config\Services::email();
 
-        $email = \Config\Services::email();
+            $smtp_email->setFrom('dmitrosamsonia@gmail.com', 'Dmitro');
+            $smtp_email->setTo($email);
 
-        $email->setFrom('bensch8920@gmail.com', 'Your Name');
-        $email->setTo('winwilust@gmail.com');
+            $smtp_email->setSubject('Password Reset Request');
+            $smtp_email->setMessage('Password Request, go to this url <a href="' . base_url("auth/verify_token/{$token}") . '" target="_blank">Reset Password</a>');
 
-        $email->setSubject('Email Test11');
-        $email->setMessage('Testing the email class.');
-
-        if (! $email->send()) {
-            $result["status"] = "1111";
+            if (! $smtp_email->send()) {
+                $result["status"] = "failed";
+            }
         }else{
-            $result["status"] = "2222";
+            $result["status"] ="not exist";
         }
-        print_r($email);
+
         echo json_encode($result);
     }
 }

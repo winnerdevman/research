@@ -51,6 +51,7 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         $this->user_model = new \App\Models\LocationUserModel();
+        $this->user_token_model = new \App\Models\LocationUserTokenModel();
         $this->session = \Config\Services::session();
     }
 
